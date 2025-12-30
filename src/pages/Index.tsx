@@ -64,6 +64,33 @@ const Index = () => {
     }
   ];
 
+  const testimonials = [
+    {
+      name: 'Анна Петрова',
+      business: 'Кафе "Уютный уголок"',
+      text: 'Заказали неоновую вывеску для кафе — превзошли все ожидания! Яркая, стильная, привлекает внимание. Поток посетителей увеличился на 40%. Спасибо команде за профессионализм!',
+      rating: 5
+    },
+    {
+      name: 'Дмитрий Соколов',
+      business: 'Барбершоп "Стиль"',
+      text: 'Ребята сделали невероятный дизайн для нашего барбершопа. Монтаж быстрый, работа качественная. Вывеска работает уже год без единой проблемы. Рекомендую!',
+      rating: 5
+    },
+    {
+      name: 'Елена Романова',
+      business: 'Частный заказчик',
+      text: 'Заказывала неоновую надпись для домашнего интерьера. Получилось очень атмосферно! Консультировали по выбору цвета и размера, помогли с установкой. Довольна на 100%.',
+      rating: 5
+    },
+    {
+      name: 'Игорь Волков',
+      business: 'Ресторан "Огонь"',
+      text: 'Сотрудничаем уже не первый раз. Делали большую фасадную вывеску — результат потрясающий! Качество материалов, точность в сроках, адекватные цены. Лучшие в своём деле.',
+      rating: 5
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -184,6 +211,33 @@ const Index = () => {
                 <div className="text-sm text-muted-foreground">Гарантия</div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-card/50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 neon-glow text-primary">
+            Отзывы клиентов
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="bg-card border-border hover:border-primary transition-colors">
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex gap-1">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Icon key={i} name="Star" size={20} className="text-secondary fill-secondary" />
+                    ))}
+                  </div>
+                  <p className="text-muted-foreground italic">"{testimonial.text}"</p>
+                  <div className="pt-2 border-t border-border">
+                    <p className="font-semibold text-foreground">{testimonial.name}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.business}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
